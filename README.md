@@ -19,7 +19,7 @@ FutClaw turns public developer activity into shareable FUT-style identity cards.
 - Generate developer cards from public GitHub profiles.
 - Generate RepoClub squads from public GitHub repositories.
 - Export cards and story-format images.
-- Customize card country, overall, theme, and accent through URL/UI overrides.
+- Customize card name, country, overall, theme, and accent through URL/UI overrides.
 - Browse recent community cards when Supabase is configured.
 - Run locally or self-host with your own GitHub/Supabase/Redis credentials.
 
@@ -72,6 +72,8 @@ Production cards are designed to live at stable URLs:
 ```md
 [![My FutClaw card](https://futclaw.com/YOUR_USERNAME.png)](https://futclaw.com/YOUR_USERNAME)
 ```
+
+Use `?name=De%20Ruwe` to override the card display name without changing the GitHub username.
 
 RepoClub squads use repository URLs:
 
