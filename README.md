@@ -59,7 +59,8 @@ See `.env.example` for all supported variables.
 - `/[username]` public scout report
 - `/u/[username]` canonical scout report implementation
 - `/youtube/[username]` public YouTube card route
-- `/repo/[owner]/[repo]` RepoClub squad
+- `/[owner]/[repo]` RepoClub squad
+- `/repo/[owner]/[repo]` legacy RepoClub squad route
 - `/community` community browser
 - `/community/[username]` community card detail
 - `/api/card/[username]` JSON card API
@@ -78,7 +79,7 @@ Use `?name=De%20Ruwe` to override the card display name without changing the Git
 RepoClub squads use repository URLs:
 
 ```txt
-https://futclaw.com/repo/owner/repo
+https://futclaw.com/owner/repo
 ```
 
 ## Inspiration

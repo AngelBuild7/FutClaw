@@ -107,7 +107,7 @@ function formatNumber(value: number) {
 
 function repoClubUrl(summary: RepoClubSummary) {
   const origin = typeof window !== "undefined" ? window.location.origin : SITE;
-  return `${origin}/repo/${encodeURIComponent(summary.owner)}/${encodeURIComponent(summary.repo)}`;
+  return `${origin}/${encodeURIComponent(summary.owner)}/${encodeURIComponent(summary.repo)}`;
 }
 
 function shareText(summary: RepoClubSummary) {

@@ -31,7 +31,7 @@ export default function AppShell({ scoutCount }: Props) {
       if (!parsed) return;
       setPending({ name: `${parsed.owner}/${parsed.repo}`, platform });
       startTransition(() => {
-        router.push(`/repo/${encodeURIComponent(parsed.owner)}/${encodeURIComponent(parsed.repo)}`);
+        router.push(`/${encodeURIComponent(parsed.owner)}/${encodeURIComponent(parsed.repo)}`);
       });
       return;
     }

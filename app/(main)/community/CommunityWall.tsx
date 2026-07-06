@@ -137,7 +137,7 @@ function cardSection(card: Card): Exclude<SectionFilter, "all"> {
 function clubHref(card: Card) {
   const login = card.login.trim().replace(/^@/, "");
   const [owner, repo] = login.split("/").filter(Boolean);
-  if (owner && repo) return `/repo/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}`;
+  if (owner && repo) return `/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}`;
   return `/community/${encodeURIComponent(card.login)}`;
 }
 
