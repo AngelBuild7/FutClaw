@@ -6,6 +6,7 @@ import type { Card } from "@/lib/scoring/types";
 
 export type SharePlatform = "x" | "linkedin" | "whatsapp";
 export interface ShareUrlOptions {
+  canonicalName?: string;
   canonicalCountry?: string;
   canonicalOverall?: number;
 }
@@ -48,6 +49,9 @@ const hash = (s: string): number => {
 export function cardUrl(card: Card, options: ShareUrlOptions = {}): string {
   const base = card.platform === "youtube" ? `${SITE}/youtube/${card.login}` : `${SITE}/${card.login}`;
   const params = new URLSearchParams();
+  if (options.canonicalName !== undefined && card.name !== options.canonicalName) {
+    params.set("name", card.name);
+  }
   if (card.country && card.country !== options.canonicalCountry) {
     params.set("country", card.country);
   }

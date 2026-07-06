@@ -8,6 +8,7 @@ import StoryFrame from "./StoryFrame";
 import CardActions from "./CardActions";
 import FlagPicker from "./FlagPicker";
 import OverallPicker from "./OverallPicker";
+import NamePicker from "./NamePicker";
 import CustomizationPicker, { type CardCustomization } from "./CustomizationPicker";
 import Mascot from "./Mascot";
 import FooterCredit from "./FooterCredit";
@@ -22,6 +23,8 @@ interface Props {
   onBack: () => void;
   /** Edit the card's flag from the report (click-the-flag picker). */
   onCountryChange: (code: string) => void;
+  /** Edit the displayed card name; the scouted GitHub profile remains canonical. */
+  onNameChange: (name: string) => void;
   /** Edit the displayed card rating; the scouted rating remains canonical. */
   onOverallChange: (overall: number) => void;
   /** Edit visual-only card theme/accent overrides. */
@@ -30,6 +33,8 @@ interface Props {
   canonicalCountry?: string;
   /** Scouted rating; share links only carry ?overall= when it's overridden. */
   canonicalOverall: number;
+  /** GitHub/YouTube profile name; share links only carry ?name= when it's overridden. */
+  canonicalName: string;
 }
 
 // Card width scales with the viewport but is bounded by BOTH width and height
@@ -47,10 +52,12 @@ export default function ResultView({
   card,
   onBack,
   onCountryChange,
+  onNameChange,
   onOverallChange,
   onCustomizationChange,
   canonicalCountry = "",
   canonicalOverall,
+  canonicalName,
 }: Props) {
   const captureRef = useRef<HTMLDivElement>(null);
   const storyRef = useRef<HTMLDivElement>(null);
@@ -192,6 +199,7 @@ export default function ResultView({
               </div>
             </div>
             <FlagPicker value={card.country} onChange={onCountryChange} />
+            <NamePicker value={card.name} canonicalValue={canonicalName} onChange={onNameChange} />
             <OverallPicker value={card.overall} canonicalValue={canonicalOverall} onChange={onOverallChange} />
           </div>
           <div style={{ width: CARD_WIDTH }}>
@@ -201,6 +209,7 @@ export default function ResultView({
               storyRef={storyRef}
               canonicalCountry={canonicalCountry}
               canonicalOverall={canonicalOverall}
+              canonicalName={canonicalName}
             />
           </div>
         </div>

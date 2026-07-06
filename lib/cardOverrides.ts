@@ -3,6 +3,7 @@ import type { Card, CardThemeOverride } from "./scoring/types";
 export const CARD_THEME_OVERRIDES: CardThemeOverride[] = ["bronze", "silver", "gold", "toty", "icon", "claw", "midnight"];
 
 const HEX_RE = /^#?[0-9a-f]{6}$/i;
+const MAX_DISPLAY_NAME = 24;
 
 export function pickOverall(override: string | number | null | undefined, fallback: number): number {
   if (override === null || override === undefined || override === "") return fallback;
@@ -19,9 +20,20 @@ export function pickAccent(override: string | null | undefined): string | undefi
   return `#${override.replace("#", "").toLowerCase()}`;
 }
 
+export function pickName(override: string | null | undefined, fallback: string): string {
+  if (!override) return fallback;
+  const value = override
+    .replace(/[\u0000-\u001f\u007f]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, MAX_DISPLAY_NAME);
+  return value || fallback;
+}
+
 export function applyCardOverrides(
   card: Card,
   overrides: {
+    name?: string | null;
     country?: string;
     overall?: string | number | null;
     theme?: string | null;
@@ -33,6 +45,7 @@ export function applyCardOverrides(
   const accent = pickAccent(overrides.accent);
   return {
     ...card,
+    name: pickName(overrides.name, card.name),
     country: pickCountry(overrides.country, card.country) ?? "",
     overall: pickOverall(overrides.overall, card.overall),
     ...(theme || accent ? { customization: { theme, accent } } : {}),

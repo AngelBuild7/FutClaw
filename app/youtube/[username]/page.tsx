@@ -64,7 +64,7 @@ export default async function Page({
   searchParams,
 }: {
   params: Promise<{ username: string }>;
-  searchParams: Promise<{ country?: string; overall?: string; theme?: string; accent?: string }>;
+  searchParams: Promise<{ name?: string; country?: string; overall?: string; theme?: string; accent?: string }>;
 }) {
   const { username } = await params;
   const overrides = await searchParams;
@@ -72,6 +72,7 @@ export default async function Page({
   const card: Card | null = "card" in res ? res.card : null;
   const canonicalCountry = card ? pickFlag(null, card.country) ?? "" : "";
   const canonicalOverall = card?.overall ?? 0;
+  const canonicalName = card?.name ?? "";
   const displayCard = card ? applyCardOverrides(card, overrides, pickFlag) : null;
   if (displayCard) {
     after(async () => {
@@ -83,7 +84,7 @@ export default async function Page({
     <div className="relative min-h-screen overflow-x-hidden text-ink">
       <Background />
       {displayCard ? (
-        <ScoutRoute card={displayCard} canonicalCountry={canonicalCountry} canonicalOverall={canonicalOverall} />
+        <ScoutRoute card={displayCard} canonicalCountry={canonicalCountry} canonicalOverall={canonicalOverall} canonicalName={canonicalName} />
       ) : (
         <NotScouted username={username} error={(res as { error: { type: string; message: string } }).error} />
       )}

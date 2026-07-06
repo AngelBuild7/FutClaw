@@ -6,6 +6,7 @@ import ResultView from "@/components/card/ResultView";
 import { writeCardCache } from "@/hooks/useScout";
 import type { Card } from "@/lib/scoring/types";
 import type { CardCustomization } from "@/components/card/CustomizationPicker";
+import { pickName } from "@/lib/cardOverrides";
 
 // Client wrapper: a server component can't pass callbacks across the boundary,
 // so navigation and the report-page flag edit are wired here. Editing the flag
@@ -16,10 +17,12 @@ export default function ScoutRoute({
   card: initial,
   canonicalCountry,
   canonicalOverall,
+  canonicalName,
 }: {
   card: Card;
   canonicalCountry: string;
   canonicalOverall: number;
+  canonicalName: string;
 }) {
   const router = useRouter();
   const [card, setCard] = useState(initial);
@@ -44,6 +47,17 @@ export default function ScoutRoute({
     router.replace(url.pathname + url.search, { scroll: false });
   };
 
+  const onNameChange = (name: string) => {
+    const displayName = pickName(name, canonicalName);
+    const next = { ...card, name: displayName };
+    setCard(next);
+    writeCardCache(next);
+    const url = new URL(window.location.href);
+    if (displayName !== canonicalName) url.searchParams.set("name", displayName);
+    else url.searchParams.delete("name");
+    router.replace(url.pathname + url.search, { scroll: false });
+  };
+
   const onCustomizationChange = (customization: CardCustomization) => {
     const next = {
       ...card,
@@ -65,10 +79,12 @@ export default function ScoutRoute({
       card={card}
       onBack={() => router.push("/")}
       onCountryChange={onCountryChange}
+      onNameChange={onNameChange}
       onOverallChange={onOverallChange}
       onCustomizationChange={onCustomizationChange}
       canonicalCountry={canonicalCountry}
       canonicalOverall={canonicalOverall}
+      canonicalName={canonicalName}
     />
   );
 }

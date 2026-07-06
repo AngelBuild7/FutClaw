@@ -62,6 +62,12 @@ describe("share service", () => {
     );
   });
 
+  it("encodes display name overrides that differ from the canonical profile name", () => {
+    expect(cardUrl(card({ name: "De Ruwe" }), { canonicalName: "Dante De Ruwe", canonicalCountry: "us", canonicalOverall: 95 })).toBe(
+      "https://futclaw.com/torvalds?name=De+Ruwe",
+    );
+  });
+
   it("encodes theme and accent customization in card URLs", () => {
     expect(
       cardUrl(card({ customization: { theme: "claw", accent: "#e2162a" } }), {

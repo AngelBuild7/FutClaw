@@ -18,6 +18,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ username
   // the query). A valid override wins, else the GitHub-derived flag — same priority
   // as the page and JSON API.
   const searchParams = new URL(req.url).searchParams;
+  const name = searchParams.get("name");
   const country = searchParams.get("country");
   const overall = searchParams.get("overall");
   const size = pickCardImageSize(searchParams.get("size"));
@@ -25,7 +26,11 @@ export async function GET(req: Request, { params }: { params: Promise<{ username
   try {
     const card = await scoutCard(username, platform);
     return await renderCardImage(
-      applyCardOverrides(card, { country: country ?? undefined, overall, theme: searchParams.get("theme"), accent: searchParams.get("accent") }, pickFlag),
+      applyCardOverrides(
+        card,
+        { name, country: country ?? undefined, overall, theme: searchParams.get("theme"), accent: searchParams.get("accent") },
+        pickFlag,
+      ),
       size,
     );
   } catch {

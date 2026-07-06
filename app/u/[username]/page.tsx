@@ -73,7 +73,7 @@ export default async function Page({
   searchParams,
 }: {
   params: Promise<{ username: string }>;
-  searchParams: Promise<{ country?: string; overall?: string; theme?: string; accent?: string }>;
+  searchParams: Promise<{ name?: string; country?: string; overall?: string; theme?: string; accent?: string }>;
 }) {
   const { username } = await params;
   const overrides = await searchParams;
@@ -84,9 +84,11 @@ export default async function Page({
   let card: Card | null = "card" in res ? res.card : null;
   let canonicalCountry = ""; // GitHub-derived flag; share links omit ?country= unless overridden
   let canonicalOverall = 0; // Scouted rating; share links omit ?overall= unless overridden
+  let canonicalName = "";
   if (card) {
     canonicalCountry = pickFlag(null, card.country) ?? ""; // GitHub-derived only
     canonicalOverall = card.overall;
+    canonicalName = card.name;
     card = applyCardOverrides(card, overrides, pickFlag);
     const publicCard = card;
     after(async () => {
@@ -97,7 +99,7 @@ export default async function Page({
     <div className="relative min-h-screen overflow-x-hidden text-ink">
       <Background />
       {card ? (
-        <ScoutRoute card={card} canonicalCountry={canonicalCountry} canonicalOverall={canonicalOverall} />
+        <ScoutRoute card={card} canonicalCountry={canonicalCountry} canonicalOverall={canonicalOverall} canonicalName={canonicalName} />
       ) : (
         <NotScouted username={username} error={(res as { error: GithubError }).error} />
       )}

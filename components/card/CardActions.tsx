@@ -106,6 +106,7 @@ export default function CardActions({
   storyRef,
   canonicalCountry = "",
   canonicalOverall,
+  canonicalName,
 }: {
   card: Card;
   targetRef: React.RefObject<HTMLDivElement | null>;
@@ -115,6 +116,8 @@ export default function CardActions({
   canonicalCountry?: string;
   /** Scouted rating; the share link only carries ?overall= when overridden. */
   canonicalOverall: number;
+  /** Scouted profile name; the share link only carries ?name= when overridden. */
+  canonicalName: string;
 }) {
   const [done, setDone] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
@@ -142,7 +145,7 @@ export default function CardActions({
 
   // Share/copy links carry only visual overrides that differ from the scouted
   // defaults, so clean cards stay clean and customized cards reproduce exactly.
-  const shareOptions = { canonicalCountry, canonicalOverall };
+  const shareOptions = { canonicalName, canonicalCountry, canonicalOverall };
 
   const runExport = async (a: ExportAction) => {
     const node = targetRef.current;

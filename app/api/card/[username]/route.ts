@@ -15,6 +15,7 @@ function resolveDisplayCard(card: Card, searchParams: URLSearchParams): Card {
   return applyCardOverrides(
     card,
     {
+      name: searchParams.get("name"),
       country: searchParams.get("country") ?? undefined,
       overall: searchParams.get("overall"),
       theme: searchParams.get("theme"),

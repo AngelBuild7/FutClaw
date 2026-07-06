@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { pickAccent, pickOverall, pickTheme } from "@/lib/cardOverrides";
+import { applyCardOverrides, pickAccent, pickName, pickOverall, pickTheme } from "@/lib/cardOverrides";
+import type { Card } from "@/lib/scoring/types";
 
 describe("card overrides", () => {
   it("accepts valid display overall overrides", () => {
@@ -27,5 +28,23 @@ describe("card overrides", () => {
     expect(pickAccent("#39d353")).toBe("#39d353");
     expect(pickAccent("red")).toBeUndefined();
     expect(pickAccent("#fff")).toBeUndefined();
+  });
+
+  it("accepts a display name override and trims unsafe whitespace", () => {
+    expect(pickName("  De   Ruwe  ", "Dante De Ruwe")).toBe("De Ruwe");
+    expect(pickName("\n", "Dante De Ruwe")).toBe("Dante De Ruwe");
+  });
+
+  it("applies display name overrides without changing the login", () => {
+    const card = {
+      login: "dantederuwe",
+      name: "Dante De Ruwe",
+      country: "be",
+      overall: 80,
+      customization: undefined,
+    } as Card;
+    const next = applyCardOverrides(card, { name: "De Ruwe" }, (_override, fallback) => fallback);
+    expect(next.login).toBe("dantederuwe");
+    expect(next.name).toBe("De Ruwe");
   });
 });

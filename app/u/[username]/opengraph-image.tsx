@@ -45,7 +45,7 @@ export default async function Image({
   searchParams,
 }: {
   params: Promise<{ username: string }>;
-  searchParams?: Promise<{ country?: string; overall?: string; theme?: string; accent?: string }>;
+  searchParams?: Promise<{ name?: string; country?: string; overall?: string; theme?: string; accent?: string }>;
 }) {
   const { username } = await params;
   const overrides = (await searchParams) ?? {};
