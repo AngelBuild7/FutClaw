@@ -2,7 +2,7 @@
 
 Open-source developer cards, scout reports, and repo squads.
 
-FutClaw turns public developer activity into shareable FUT-style identity cards. The open-core app includes the public generation loop, card renderer, story exports, community browser, and RepoClub squads.
+FutClaw turns public developer activity into shareable FUT-style identity cards. Generate a profile card, build a RepoClub Starting XI from any public repository, and share the result anywhere.
 
 <p align="center">
   <a href="https://futclaw.com/repo/vercel/next.js">
@@ -79,11 +79,9 @@ RepoClub squads use repository URLs:
 https://futclaw.com/repo/owner/repo
 ```
 
-## Open Core Boundary
+## Inspiration
 
-This repo intentionally excludes the hosted cloud layer: account management, claims, billing, private analytics, and managed revenue verification.
-
-FutClaw Cloud can build on top of this core with hosted portfolios, verified badges, analytics, and managed infrastructure.
+FutClaw is inspired by [GitFut](https://github.com/Younesfdj/gitfut), the project that made GitHub profile cards feel instantly shareable. FutClaw extends that idea with RepoClub squads, story exports, community browsing, and deeper customization.
 
 ## Development
 

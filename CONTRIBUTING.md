@@ -50,7 +50,7 @@ Add or update tests for scoring, parsing, URL overrides, and other pure logic.
 
 ## Scope
 
-This repo is the open-core app. Please keep account management, claims, billing, private analytics, and managed cloud-only features out of this repository.
+Great areas to contribute include scoring, GitHub signal parsing, RepoClub, card rendering, exports, accessibility, tests, and docs.
 
 ## Style
 
