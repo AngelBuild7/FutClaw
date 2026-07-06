@@ -7,7 +7,7 @@ Thanks for helping improve FutClaw. Good contributions include scoring fixes, ca
 FutClaw is a Next.js App Router app in TypeScript, styled with Tailwind. You'll need Node 20+ and npm.
 
 ```bash
-git clone https://github.com/AngelBuild7/FutClaw.git
+git clone https://github.com/wnb-labs/FutClaw.git
 cd FutClaw
 npm install
 npm run setup
