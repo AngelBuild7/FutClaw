@@ -6,7 +6,7 @@ FutClaw turns public developer activity into shareable FUT-style identity cards.
 
 <p align="center">
   <a href="https://futclaw.com/repo/vercel/next.js">
-    <img src="./public/repo-club/pitch-points.png" width="820" alt="FutClaw RepoClub formation board">
+    <img src="./public/readme/repoclub-nextjs.png" width="820" alt="FutClaw RepoClub Starting XI for vercel/next.js">
   </a>
 </p>
 
