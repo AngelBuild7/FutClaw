@@ -35,6 +35,16 @@ Open `http://localhost:3000`.
 
 `npm run setup` creates `.env.local` from `.env.example` if it does not exist. It never overwrites an existing `.env.local`.
 
+The setup wizard is interactive. It asks which integrations you want to enable
+and writes only the values you provide:
+
+- GitHub token for live GitHub cards.
+- YouTube Data API v3 key for live YouTube cards.
+- Supabase keys for community/auth-backed data.
+- Redis/Upstash values for caching.
+
+You can skip everything and still run the app with sample/fallback data.
+
 ## Environment
 
 Live GitHub scouting requires at least one GitHub token:
