@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="relative bg-bg">
       <FullWidthDivider position="top" />
-      <div className="mx-auto flex max-w-5xl flex-col gap-6 p-4 pt-5 md:flex-row md:items-start md:justify-between">
+      <div className="mx-auto flex max-w-5xl flex-col gap-8 p-4 pt-5 md:flex-row md:items-start md:justify-between">
         <div className="flex max-w-sm flex-col gap-4">
           <span className="font-display text-xl font-bold tracking-tight text-ink">
             FutClaw
@@ -30,7 +30,10 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className="flex flex-wrap gap-4 text-sm">
+        <nav
+          aria-label="Footer"
+          className="flex flex-col items-start gap-3 text-sm md:items-end"
+        >
           {resources.map(({ href, title }) => (
             <a
               className="text-ink-dim transition hover:text-ink"
@@ -40,7 +43,7 @@ export function Footer() {
               {title}
             </a>
           ))}
-        </div>
+        </nav>
       </div>
       <FullWidthDivider />
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-4 py-4">
