@@ -6,7 +6,7 @@ Please do not open a public issue for security problems.
 
 Use GitHub private vulnerability reporting on this repository when available:
 
-`Security` -> `Report a vulnerability`
+https://github.com/AngelBuild7/FutClaw/security/advisories/new
 
 If private reporting is not available, contact the repository owner privately.
 

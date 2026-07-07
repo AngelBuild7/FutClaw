@@ -20,11 +20,9 @@ const AUTHORS: ReadonlyArray<{ handle: string; x: string }> = [
   { handle: "AngelBuild7", x: "https://x.com/AngelBuild7" },
 ];
 
-// Footer author credit — "Built by  @younesfdj ✕  &  @wassim_khouas ✕". The repo
-// star CTA moved out to the top-right GithubStar pill, so this is now purely the
-// maker credit. Shared by the home footer (AppShell) and the scout-report footer
-// (ResultView) so they match. A soft dark backdrop lifts the credit off the
-// contribution-grid motif so the text keeps its contrast wherever it lands.
+// Maker credit shared by the scout-report footer surfaces. A soft dark backdrop
+// lifts the credit off the contribution-grid motif so the text keeps its
+// contrast wherever it lands.
 export default function FooterCredit() {
   return (
     <div className="relative inline-flex max-w-full items-center justify-center">

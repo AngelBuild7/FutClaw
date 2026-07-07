@@ -1,7 +1,7 @@
 import { Star } from "lucide-react";
 import { formatCount } from "@/lib/format";
 
-const REPO_URL = "https://github.com/younesfdj/futclaw";
+const REPO_URL = "https://github.com/AngelBuild7/FutClaw";
 
 // lucide dropped its brand marks, so the GitHub octocat is an inline SVG.
 function GithubMark({ size = 16 }: { size?: number }) {
