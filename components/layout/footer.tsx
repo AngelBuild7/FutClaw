@@ -46,7 +46,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-4 py-4">
         <CommunityThemeToggle />
         <p className="text-center text-sm font-light text-ink-soft">
-          &copy; {new Date().getFullYear()} FutClaw. All rights reserved.
+          &copy; {new Date().getFullYear()} FutClaw. Open source under the MIT License.
         </p>
         <p className="text-center text-xs text-ink-faint">
           Inspired by{" "}
@@ -77,9 +77,9 @@ export function Footer() {
 const resources = [
   { title: "Scout", href: "/" },
   { title: "Community", href: "/community" },
-  { title: "GitHub", href: "https://github.com/wnb-labs/FutClaw" },
+  { title: "GitHub", href: "https://github.com/AngelBuild7/FutClaw2" },
 ];
 
 const socialLinks = [
-  { label: "Open FutClaw on GitHub", icon: <GithubIcon />, link: "https://github.com/wnb-labs/FutClaw" },
+  { label: "Open FutClaw on GitHub", icon: <GithubIcon />, link: "https://github.com/AngelBuild7/FutClaw2" },
 ];
