@@ -49,7 +49,13 @@ For token pooling:
 GITHUB_TOKENS=token_one,token_two
 ```
 
-Supabase and Redis are optional for local demos. Without them, FutClaw can still render sample/community fallback data and generate live cards when GitHub tokens are configured.
+Live YouTube cards require a YouTube Data API v3 key:
+
+```env
+YOUTUBE_API_KEY=
+```
+
+Supabase and Redis are optional for local demos. Without them, FutClaw can still render sample/community fallback data and generate live cards when the relevant GitHub or YouTube API credentials are configured.
 
 See `.env.example` for all supported variables.
 
