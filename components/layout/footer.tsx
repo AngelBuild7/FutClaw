@@ -80,9 +80,9 @@ export function Footer() {
 const resources = [
   { title: "Scout", href: "/" },
   { title: "Community", href: "/community" },
-  { title: "GitHub", href: "https://github.com/AngelBuild7/FutClaw2" },
+  { title: "GitHub", href: "https://github.com/AngelBuild7/FutClaw" },
 ];
 
 const socialLinks = [
-  { label: "Open FutClaw on GitHub", icon: <GithubIcon />, link: "https://github.com/AngelBuild7/FutClaw2" },
+  { label: "Open FutClaw on GitHub", icon: <GithubIcon />, link: "https://github.com/AngelBuild7/FutClaw" },
 ];
